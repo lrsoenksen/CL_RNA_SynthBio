@@ -1,0 +1,16 @@
+data_folder = data/
+core_models_path = models/
+data_filename = 2019-03-30_toehold_dataset_proc_with_params.csv
+seed = 7
+model_name = mlp_1d
+input_cols = seq_SwitchON_GFP
+output_cols = ['ON', 'OFF', 'ON_OFF']
+qc_level = 3
+n_foldCV = 10
+scaler = QuantileTransformer(copy=True, ignore_implicit_zeros=False, n_quantiles=1000,
+          output_distribution='uniform', random_state=None,
+          subsample=100000)
+loss_init = mae
+verbose_init = True
+evaluate  =  True
+display_init =  True
