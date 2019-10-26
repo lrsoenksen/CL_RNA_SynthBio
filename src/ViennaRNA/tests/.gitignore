@@ -1,0 +1,33 @@
+# c-sources and object files are automatically generated
+*.c
+*.o
+
+# log files andd test results are of no interest
+*.log
+*.trs
+
+# ignore executables
+fold
+utils
+energy_evaluation
+constraints
+eval_structure
+walk
+neighbor
+constraints_soft
+
+# ignore perl5 unit test output
+test_ss.ps
+test_ss_a.ps
+test.coord
+test.par
+# ignore all tests we copy over from interfaces/Perl/RNA/t
+perl5/test-RNA-Design.t
+
+RNAHelpers.pm
+RNApath.py
+RNApath.pyc
+__pycache__
+test-RNA-mfe_eval.pl.out
+test-RNA-mfe_eval.py.out
+test-RNA-mfe_eval.py3.out

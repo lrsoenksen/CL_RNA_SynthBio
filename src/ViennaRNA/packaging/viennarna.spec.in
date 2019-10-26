@@ -1,0 +1,322 @@
+# ViennaRNA.spec
+#
+# Copyright (c) 1994-2017 Ivo Hofacker, Peter Stadler, Ronny Lorenz rna@tbi.univie.ac.at
+#
+
+
+%if 0%{?centos_version} >= 700 || %{defined el7}
+%global with_python3 1
+%global with_epel7 1
+%global with_rnalocmin 1
+%else
+%if 0%{?fedora} || 0%{?is_opensuse}
+%global with_python3 1
+%if 0%{?fedora} && 0%{?fedora_version} < 22
+%global with_rnalocmin 0
+%else
+%global with_rnalocmin 1
+%endif
+%else
+%global with_python3 0
+%global with_rnalocmin 0
+%endif
+%endif
+
+
+%{!?_pkgdocdir: %global _pkgdocdir %%{_docdir}/%{name}}
+
+Name:           viennarna
+Version:        @PACKAGE_VERSION@
+Release:        1%{?dist}
+Summary:        RNA Secondary Structure Prediction and Comparison
+Provides:       ViennaRNA = %{version}-%{release}
+
+Vendor:         Ivo Hofacker, TBI - University of Vienna
+Packager:       Ronny Lorenz <ronny@tbi.univie.ac.at>
+Distribution:   viennarna-package
+
+Group:          Applications/Engineering
+License:        Free for non commercial use.
+URL:            @PACKAGE_URL@
+Source0:        http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-%{version}.tar.gz
+BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
+
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
+BuildRequires:  rpm-devel
+
+BuildRequires:  libstdc++-devel
+BuildRequires:  gcc gcc-c++ glibc-devel info
+BuildRequires:  gsl-devel
+BuildRequires:  mpfr-devel
+BuildRequires:  perl(ExtUtils::Embed)
+BuildRequires:  perl-Test-Simple
+
+Requires:       perl glibc info gsl mpfr
+Provides:       Kinfold
+
+%if 0%{?suse_version}
+BuildRequires:  python-devel python
+%else
+BuildRequires:  python2-devel python2
+%endif
+
+%if 0%{?with_python3}
+%if 0%{?suse_version} || 0%{?fedora}
+BuildRequires:  python3-devel python3
+%else
+%if 0%{?with_epel7}
+BuildRequires:  python34-devel python34
+%else
+BuildRequires:  python-devel python
+%endif
+%endif
+%endif
+
+
+%{!?__python2: %global __python2 /usr/bin/python2}
+%{!?python2_sitelib: %global python2_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
+%{!?python2_sitearch: %global python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+%global __provides_exclude_from ^%{python2_sitearch}/.*\\.so$
+
+%if 0%{?with_python3}
+%if 0%{?with_epel7}
+%{!?__python3: %global __python3 /usr/bin/python3.4}
+%else
+%{!?__python3: %global __python3 /usr/bin/python3}
+%endif
+
+%{!?python3_sitelib: %global python3_sitelib %(%{__python3} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
+%{!?python3_sitearch: %global python3_sitearch %(%{__python3} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+%global python3_modext %(%{__python3} -c "from distutils.sysconfig import get_config_vars; print(get_config_vars('SO')[[0]])")
+
+%global __provides_exclude_from ^%{python3_sitearch}/.*\\.so$
+
+%endif
+%description
+The ViennaRNA package consists of a library and several standalone
+programs for RNA secondary structure analysis. It includes algorithms
+for predicting optimal and suboptimal secondary structures, base pair
+probabilities and partition functions, for comparing secondary
+structures, and the design of RNA sequences with a desired structure.
+
+%package devel
+Summary:  Library and header files for ViennaRNA RNAlib
+Group:    Development/Libraries
+Provides: libRNA.a = %{version}-%{release}
+Requires: %{name} = %{version}-%{release}
+Requires: libstdc++-devel
+Requires: pkgconfig
+
+%description devel
+Header files for ViennaRNA.
+
+%package -n perl-rna
+Summary:  Perl binding for ViennaRNA RNAlib
+Group:    Development/Languages/Perl
+Requires: %{name} = %{version}-%{release}
+Requires: perl
+
+
+%description -n perl-rna
+Perl binding for ViennaRNA RNAlib.
+
+%if 0%{?suse_version}
+
+%package -n python-rna
+Summary:  Python 2 bindings for ViennaRNA RNAlib
+Group:    Libraries/Python
+Requires: %{name} = %{version}-%{release}
+Requires: python
+
+%description -n python-rna
+Python 2 bindings for ViennaRNA RNAlib.
+
+%else
+
+%package -n python2-rna
+Summary:  Python 2 bindings for ViennaRNA RNAlib
+Group:    Libraries/Python
+Requires: %{name} = %{version}-%{release}
+Requires: python2
+
+%description -n python2-rna
+Python 2 bindings for ViennaRNA RNAlib.
+
+%endif
+
+
+%if 0%{?with_python3}
+
+%if 0%{?with_epel7}
+%package -n python3-rna
+Summary:  Python 3 bindings for ViennaRNA RNAlib
+Group:    Libraries/Python
+Requires: %{name} = %{version}-%{release}
+
+Requires: python34
+%else
+%package -n python3-rna
+Summary:  Python 3 bindings for ViennaRNA RNAlib
+Group:    Libraries/Python
+Requires: %{name} = %{version}-%{release}
+
+Requires: python3
+%endif
+
+%description -n python3-rna
+Python 3 bindings for ViennaRNA RNAlib.
+
+%endif
+
+%prep
+%setup -n ViennaRNA-%{version} -q
+
+%build
+%if 0%{?fedora} && 0%{?fedora_version} < 22
+%configure --with-cluster --without-forester --without-rnalocmin --disable-lto --docdir=%{_pkgdocdir} INSTALLDIRS=vendor PERL=/usr/bin/perl
+%else
+%if 0%{?with_rnalocmin}
+%configure --with-cluster --without-forester --docdir=%{_pkgdocdir} INSTALLDIRS=vendor PERL=/usr/bin/perl
+%else
+%configure --with-cluster --without-forester --without-rnalocmin --docdir=%{_pkgdocdir} INSTALLDIRS=vendor PERL=/usr/bin/perl
+%endif
+%endif
+make %{?_smp_mflags}
+
+
+########################################
+# Perl5 test-RNA-Design.t fails on
+# RedHat/CentOS/Scientific Linux < 7 due
+# to old perl-Test-Simple package
+########################################
+%if 0%{?centos_version} >= 700 || %{defined el7} || 0%{?fedora} || 0%{?is_opensuse}
+%check
+make check
+%endif
+
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+# crude bugfix for info clash
+rm -f $RPM_BUILD_ROOT/usr/share/info/dir
+
+########################################
+# Stripping of our static LTO libRNA.a
+# totally destroys the library, i.e.
+# linking against libRNA fails with lots
+# of 'undefined reference' errors.
+# To avoid this, we can either turn off
+# LTO at compile time, or disable
+# stripping of the static library itself
+#
+# We do the latter here!
+########################################
+
+# Extract %%__os_install_post into os_install_post~
+cat << \EOF > os_install_post~
+%__os_install_post
+EOF
+
+# remove stripping of static libraries
+sed -i -e 's!/usr/lib/rpm[^[:space:]]*/brp-strip-static-archive[[:space:]]%{__strip}!!g' os_install_post~
+sed -i -e 's!/usr/lib/rpm[^[:space:]]*/brp-strip-static-archive!!g' os_install_post~
+
+# openSUSE does not call 'brp-strip-static-archive' but
+# calls its own brp_suse script, which by default strips
+# debug symbols from binary files. Luckily, it provides an
+# environment variable to turn off stripping debug symbols
+%if 0%{?suse_version}
+# get rid of /usr/lib/rpm/brp-strip-debug
+export NO_BRP_STRIP_DEBUG=true
+%endif
+
+%define __os_install_post . ./os_install_post~
+
+########################################
+# The above should ensure not to
+# accidentally strip libRNA.a
+########################################
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-,root,root,-)
+%{_bindir}/*
+%{_datadir}/ViennaRNA/
+%{_mandir}/man1/RNAplfold.1.gz
+%{_mandir}/man1/AnalyseSeqs.1.gz
+%{_mandir}/man1/Kinfold.1.gz
+%{_mandir}/man1/RNApdist.1.gz
+%{_mandir}/man1/RNAduplex.1.gz
+%{_mandir}/man1/RNAup.1.gz
+%{_mandir}/man1/RNAheat.1.gz
+%{_mandir}/man1/RNAeval.1.gz
+%{_mandir}/man1/RNALalifold.1.gz
+%{_mandir}/man1/RNAaliduplex.1.gz
+%{_mandir}/man1/RNAsubopt.1.gz
+%{_mandir}/man1/RNALfold.1.gz
+%{_mandir}/man1/RNAfold.1.gz
+%{_mandir}/man1/RNApvmin.1.gz
+%{_mandir}/man1/AnalyseDists.1.gz
+%{_mandir}/man1/RNAsnoop.1.gz
+%{_mandir}/man1/RNAplot.1.gz
+%{_mandir}/man1/RNAalifold.1.gz
+%{_mandir}/man1/RNAinverse.1.gz
+%{_mandir}/man1/RNAPKplex.1.gz
+%{_mandir}/man1/RNAparconv.1.gz
+%{_mandir}/man1/RNAcofold.1.gz
+%{_mandir}/man1/RNA2Dfold.1.gz
+%{_mandir}/man1/RNApaln.1.gz
+%{_mandir}/man1/RNAdistance.1.gz
+%{_mandir}/man1/RNAplex.1.gz
+%{_mandir}/man1/ct2db.1.gz
+%if 0%{?with_rnalocmin}
+%{_mandir}/man1/RNAlocmin.1.gz
+%endif
+
+%files devel
+%defattr(-,root,root,-)
+%{_libdir}/libRNA.a
+%{_libdir}/libRNA.la
+%{_includedir}/ViennaRNA
+%{_libdir}/pkgconfig/RNAlib2.pc
+%doc %{_pkgdocdir}
+%doc /usr/share/info/RNAlib.info.gz
+
+%files -n perl-rna
+%defattr(644,root,root,755)
+%{perl_vendorlib}/RNA.pm
+%{perl_vendorlib}/RNA
+%{perl_vendorarch}/auto/RNA
+%attr(755,root,root) %{perl_vendorarch}/auto/RNA/RNA.so
+
+%if 0%{?suse_version}
+
+%files -n python-rna
+%defattr(-,root,root,-)
+%{python_sitearch}/*
+%{python_sitearch}/RNA/
+
+%else
+
+%files -n python2-rna
+%defattr(-,root,root,-)
+%{python2_sitearch}/*
+%{python2_sitearch}/RNA/
+
+%endif
+
+%if 0%{?with_python3}
+
+%files -n python3-rna
+%defattr(-,root,root,-)
+%{python3_sitearch}/*
+%{python3_sitearch}/RNA/
+
+%endif

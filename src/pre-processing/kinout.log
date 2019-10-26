@@ -1,0 +1,120 @@
+#<
+#Date: Wed Mar  6 17:34:17 2019
+#EnergyModel: dangle=2 Temp=37.0 logML=logarithmic Par=VRNA-1.4
+#MoveSet: noShift=off noLP=off
+#Simulation: num=1 time=10000000.00 seed=clock fpt=on mc=Kawasaki
+#Simulation: phi=1 pbounds=0.1 0.1 2
+#Output: log=kinout silent=off lmin=off cut=20.00
+#...............................................................................
+#............................................................................... (  0.00)
+#..............((.(......).))....((((((((((..((((((...........))))))..)))))))))) (-16.50) X01
+(7134   3149 43935) X01      559.949
+(60280 62540  4990)
+#<
+#Date: Wed Mar  6 17:34:18 2019
+#EnergyModel: dangle=2 Temp=37.0 logML=logarithmic Par=VRNA-1.4
+#MoveSet: noShift=off noLP=off
+#Simulation: num=1 time=10000000.00 seed=clock fpt=on mc=Kawasaki
+#Simulation: phi=1 pbounds=0.1 0.1 2
+#Output: log=kinout silent=off lmin=off cut=20.00
+#...............................................................................
+#............................................................................... (  0.00)
+#..............((.(......).))....((((((((((..((((((...........))))))..)))))))))) (-16.50) X01
+(29883   653 26354) X01     9742.395
+(56157 14431 29067)
+#<
+#Date: Wed Mar  6 17:34:22 2019
+#EnergyModel: dangle=2 Temp=37.0 logML=logarithmic Par=VRNA-1.4
+#MoveSet: noShift=off noLP=off
+#Simulation: num=1 time=10000000.00 seed=clock fpt=on mc=Kawasaki
+#Simulation: phi=1 pbounds=0.1 0.1 2
+#Output: log=kinout silent=off lmin=off cut=20.00
+#...............................................................................
+#............................................................................... (  0.00)
+#..............((.(......).))....((((((((((..((((((...........))))))..)))))))))) (-16.50) X01
+(3779   4862 29395) X01  1635856.005
+(60075 16574 23839)
+#<
+#Date: Wed Mar  6 17:35:10 2019
+#EnergyModel: dangle=2 Temp=37.0 logML=logarithmic Par=VRNA-1.4
+#MoveSet: noShift=off noLP=off
+#Simulation: num=1 time=10000000.00 seed=clock fpt=on mc=Kawasaki
+#Simulation: phi=1 pbounds=0.1 0.1 2
+#Output: log=kinout silent=off lmin=off cut=20.00
+#...............................................................................
+#............................................................................... (  0.00)
+#..............((.(......).))....((((((((((..((((((...........))))))..)))))))))) (-16.50) X01
+(38150 56154 42527) X01      163.667
+(14882 22101 63752)
+#<
+#Date: Wed Mar  6 17:35:11 2019
+#EnergyModel: dangle=2 Temp=37.0 logML=logarithmic Par=VRNA-1.4
+#MoveSet: noShift=off noLP=off
+#Simulation: num=1 time=10000000.00 seed=clock fpt=on mc=Kawasaki
+#Simulation: phi=1 pbounds=0.1 0.1 2
+#Output: log=kinout silent=off lmin=off cut=20.00
+#...............................................................................
+#............................................................................... (  0.00)
+#..............((.(......).))....((((((((((..((((((...........))))))..)))))))))) (-16.50) X01
+(52469 60456 47473) X01     8211.483
+(53749   681 29876)
+#<
+#Date: Wed Mar  6 17:35:14 2019
+#EnergyModel: dangle=2 Temp=37.0 logML=logarithmic Par=VRNA-1.4
+#MoveSet: noShift=off noLP=off
+#Simulation: num=1 time=10000000.00 seed=clock fpt=on mc=Kawasaki
+#Simulation: phi=1 pbounds=0.1 0.1 2
+#Output: log=kinout silent=off lmin=off cut=20.00
+#...............................................................................
+#............................................................................... (  0.00)
+#..............((.(......).))....((((((((((..((((((...........))))))..)))))))))) (-16.50) X01
+(47367 54251 18802) X01     8367.520
+(34851 10533  8853)
+#<
+#Date: Wed Mar  6 17:35:18 2019
+#EnergyModel: dangle=2 Temp=37.0 logML=logarithmic Par=VRNA-1.4
+#MoveSet: noShift=off noLP=off
+#Simulation: num=1 time=10000000.00 seed=clock fpt=on mc=Kawasaki
+#Simulation: phi=1 pbounds=0.1 0.1 2
+#Output: log=kinout silent=off lmin=off cut=20.00
+#...............................................................................
+#............................................................................... (  0.00)
+#..............((.(......).))....((((((((((..((((((...........))))))..)))))))))) (-16.50) X01
+(23130   963 29951) X01      531.392
+(22308  1406 57254)
+#<
+#Date: Wed Mar  6 17:35:19 2019
+#EnergyModel: dangle=2 Temp=37.0 logML=logarithmic Par=VRNA-1.4
+#MoveSet: noShift=off noLP=off
+#Simulation: num=1 time=10000000.00 seed=clock fpt=on mc=Kawasaki
+#Simulation: phi=1 pbounds=0.1 0.1 2
+#Output: log=kinout silent=off lmin=off cut=20.00
+#...............................................................................
+#............................................................................... (  0.00)
+#..............((.(......).))....((((((((((..((((((...........))))))..)))))))))) (-16.50) X01
+(52201 25368 21061) X01  6741318.580
+(59409 38022 20157)
+#<
+#Date: Wed Mar  6 17:37:15 2019
+#EnergyModel: dangle=2 Temp=37.0 logML=logarithmic Par=VRNA-1.4
+#MoveSet: noShift=off noLP=off
+#Simulation: num=1 time=10000000.00 seed=clock fpt=on mc=Kawasaki
+#Simulation: phi=1 pbounds=0.1 0.1 2
+#Output: log=kinout silent=off lmin=off cut=20.00
+#...............................................................................
+#............................................................................... (  0.00)
+#..............((.(......).))....((((((((((..((((((...........))))))..)))))))))) (-16.50) X01
+(2507  35314   971) X01        9.778
+(49093 15786 31801)
+#<
+#Date: Wed Mar  6 17:37:15 2019
+#EnergyModel: dangle=2 Temp=37.0 logML=logarithmic Par=VRNA-1.4
+#MoveSet: noShift=off noLP=off
+#Simulation: num=1 time=10000000.00 seed=clock fpt=on mc=Kawasaki
+#Simulation: phi=1 pbounds=0.1 0.1 2
+#Output: log=kinout silent=off lmin=off cut=20.00
+#...............................................................................
+#............................................................................... (  0.00)
+#..............((.(......).))....((((((((((..((((((...........))))))..)))))))))) (-16.50) X01
+(35102 53058 54838) X01   603426.663
+(56644  7390 53850)

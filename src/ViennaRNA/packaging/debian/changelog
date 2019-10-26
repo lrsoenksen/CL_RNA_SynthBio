@@ -1,0 +1,186 @@
+viennarna (2.4.11-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.4.11
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Mon, 17 Dec 2018 10:00:00 +0100
+
+viennarna (2.4.10-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.4.10
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Wed, 26 Sep 2018 14:00:00 +0100
+
+viennarna (2.4.9-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.4.9
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Wed, 11 Jul 2018 10:00:00 +0100
+
+viennarna (2.4.8-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.4.8
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Fri, 22 Jun 2018 22:00:00 +0100
+
+viennarna (2.4.7-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.4.7
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Thu, 14 Jun 2018 10:00:00 +0100
+
+viennarna (2.4.6-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.4.6
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Thu, 19 Apr 2018 10:00:00 +0100
+
+viennarna (2.4.5-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.4.5
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Tue, 17 Apr 2018 14:00:00 +0100
+
+viennarna (2.4.4-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.4.4
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Tue, 06 Mar 2018 12:00:00 +0100
+
+viennarna (2.4.3-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.4.3
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Mon, 13 Nov 2017 12:00:00 +0100
+
+viennarna (2.4.2-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.4.2
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Fri, 13 Oct 2017 12:00:00 +0100
+
+viennarna (2.4.1-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.4.1
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Wed, 23 Aug 2017 11:00:00 +0100
+
+viennarna (2.4.0-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.4.0
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Tue, 01 Aug 2017 13:00:00 +0100
+
+viennarna (2.3.5-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.3.5
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Fri, 14 Apr 2017 10:00:00 +0100
+
+viennarna (2.3.4-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.3.4
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Fri, 10 Mar 2017 10:00:00 +0100
+
+viennarna (2.3.3-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.3.3
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Wed, 24 Jan 2017 20:00:00 +0100
+
+viennarna (2.3.2-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.3.2
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Wed, 18 Nov 2016 13:00:00 +0100
+
+viennarna (2.3.1-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.3.1
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Tue, 15 Nov 2016 11:00:00 +0100
+
+viennarna (2.3.0-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.3.0
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Tue, 01 Nov 2016 13:00:00 +0100
+
+viennarna (2.2.10-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.2.10
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Tue, 06 Sep 2016 15:00:00 +0200
+
+viennarna (2.2.9-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.2.9
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Thu, 01 Sep 2016 11:00:00 +0200
+
+viennarna (2.2.8-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.2.8
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Mon, 01 Aug 2016 12:00:00 +0200
+
+viennarna (2.2.7-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.2.7
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Wed, 29 Jun 2016 15:00:00 +0200
+
+viennarna (2.2.6-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.2.6
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Sun, 19 Jun 2016 13:00:00 +0200
+
+viennarna (2.2.5-2) UNRELEASED; urgency=low
+
+  * Include Python3 bindings to RNAlib
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Mon, 11 Apr 2016 18:00:00 +0200
+
+viennarna (2.2.5-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.2.5
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Fri, 08 Apr 2016 18:30:00 +0200
+
+viennarna (2.2.4-2) UNRELEASED; urgency=low
+
+  * Fixed python binding install directory
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Mon, 21 Feb 2016 17:00:00 +0100
+
+viennarna (2.2.4-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.2.4
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Fri, 19 Feb 2016 21:30:00 +0100
+
+viennarna (2.2.3-2) UNRELEASED; urgency=low
+
+  * Small fix for motif anntoation in upper part of dot-plot
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Tue, 16 Feb 2016 10:24:12 +0100
+
+viennarna (2.2.3-1) UNRELEASED; urgency=low
+
+  * Bump to upstream release 2.2.3
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Sat, 13 Feb 2016 18:47:12 +0100
+
+viennarna (2.2.2-1) UNRELEASED; urgency=low
+
+  * Bugfix for RNAcofold --noLP issue
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Mon, 08 Feb 2016 18:37:12 +0100
+
+viennarna (2.2.1-2) UNRELEASED; urgency=low
+
+  * Split packages into core, development files, and scripting language interfaces
+  * Renamed package from vienna-rna to viennarna
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Mon, 08 Feb 2016 11:58:12 +0100

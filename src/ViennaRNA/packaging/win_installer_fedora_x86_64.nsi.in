@@ -1,0 +1,301 @@
+!define VERSION "@VERSION@"
+!define PACKAGE "ViennaRNA Package"
+!define MULTIUSER_INSTALLMODE_INSTDIR "${PACKAGE}"
+BrandingText "${PACKAGE} - ${VERSION} [ TBI / Institute for Theoretical Chemistry / University of Vienna ]"
+
+!define WELCOME_TITLE 'Welcome to the ${PACKAGE} ${VERSION} setup wizard!'
+ 
+!define UNWELCOME_TITLE 'Welcome to the ${PACKAGE} ${VERSION} uninstall wizard!'
+ 
+!define FINISH_TITLE 'Finished installing the ${PACKAGE} ${VERSION}!'
+ 
+!define UNFINISH_TITLE 'Finished uninstalling the ${PACKAGE} ${VERSION}!'
+
+!define MULTIUSER_EXECUTIONLEVEL Highest
+!define MULTIUSER_MUI
+!define MULTIUSER_INSTALLMODE_COMMANDLINE
+!include MultiUser.nsh
+!include MUI2.nsh
+
+# defines for newer versions
+!include Sections.nsh
+# SECTION_OFF is defined in Sections.nsh as 0xFFFFFFFE
+!define SECTION_ON ${SF_SELECTED} # 0x1
+
+
+# Name of the software
+name "${PACKAGE}"
+# Name of the installer
+outfile "Install-ViennaRNA-${VERSION}_64bit.exe"
+
+# define the directory to install to, the desktop in this case as specified  
+# by the predefined $DESKTOP variable
+#installDir "$PROGRAMFILES\${PACKAGE}"
+
+!define MUI_WELCOMEPAGE_TITLE '${WELCOME_TITLE}'
+!define MUI_WELCOMEPAGE_TITLE_3LINES
+
+!insertmacro MUI_PAGE_WELCOME
+
+#Page license
+!insertmacro MUI_PAGE_LICENSE "..\license.txt"
+
+#Page Install mode
+!insertmacro MULTIUSER_PAGE_INSTALLMODE
+
+#Page component selection
+!define MUI_COMPONENTSPAGE_SMALLDESC
+!insertmacro MUI_PAGE_COMPONENTS
+
+#Page directory
+!insertmacro MUI_PAGE_DIRECTORY
+
+#Page instfiles
+!insertmacro MUI_PAGE_INSTFILES 
+
+!define MUI_FINISHPAGE_TITLE '${FINISH_TITLE}'
+!define MUI_FINISHPAGE_TITLE_3LINES
+!define MUI_FINISHPAGE_NOAUTOCLOSE
+!insertmacro MUI_PAGE_FINISH
+
+!define MUI_WELCOMEPAGE_TITLE  '${UNWELCOME_TITLE}'
+!define MUI_WELCOMEPAGE_TITLE_3LINES
+!insertmacro MUI_UNPAGE_WELCOME
+!insertmacro MUI_UNPAGE_INSTFILES
+!define MUI_FINISHPAGE_TITLE '${UNFINISH_TITLE}'
+!define MUI_FINISHPAGE_TITLE_3LINES
+!define MUI_UNFINISHPAGE_NOAUTOCLOSE
+!insertmacro MUI_UNPAGE_FINISH
+
+!insertmacro MUI_LANGUAGE "English"
+
+# default section
+section "Core" sec_core
+  SectionIn RO
+ 
+  # define the output path for this file
+  setOutPath $INSTDIR
+   
+  # define what to install and place it in the output path
+
+  # first all executable programs
+  File "../src/bin/.libs/RNAeval.exe"
+  File "../src/bin/.libs/RNAfold.exe"
+  File "../src/bin/.libs/RNAheat.exe"
+  File "../src/bin/.libs/RNApdist.exe"
+  File "../src/bin/.libs/RNAdistance.exe"
+  File "../src/bin/.libs/RNAinverse.exe"
+  File "../src/bin/.libs/RNAplot.exe"
+  File "../src/bin/.libs/RNAsubopt.exe"
+  File "../src/bin/.libs/RNALfold.exe"
+  File "../src/bin/.libs/RNAcofold.exe"
+  File "../src/bin/.libs/RNAduplex.exe"
+  File "../src/bin/.libs/RNApaln.exe"
+  File "../src/bin/.libs/RNAalifold.exe"
+  File "../src/bin/.libs/RNAplfold.exe"
+  File "../src/bin/.libs/RNAup.exe"
+  File "../src/bin/.libs/RNAaliduplex.exe"
+  File "../src/bin/.libs/RNAparconv.exe"
+  File "../src/bin/.libs/RNAPKplex.exe"
+  File "../src/bin/.libs/RNApvmin.exe"
+  File "../src/bin/.libs/RNALalifold.exe"
+  File "../src/bin/.libs/RNA2Dfold.exe"
+  File "../src/bin/.libs/RNAplex.exe"
+  File "../src/bin/.libs/RNAsnoop.exe"
+
+  # create the misc directory and add files
+  CreateDirectory "$INSTDIR\Misc"
+  File /oname=Misc\rna_turner2004.par ../misc/rna_turner2004.par
+  File /oname=Misc\rna_turner1999.par ../misc/rna_turner1999.par
+  File /oname=Misc\rna_andronescu2007.par ../misc/rna_andronescu2007.par
+  File /oname=Misc\dna_mathews2004.par ../misc/dna_mathews2004.par
+  File /oname=Misc\dna_mathews1999.par ../misc/dna_mathews1999.par
+  File /oname=Misc\2Dlandscape_pf.gri ../misc/2Dlandscape_pf.gri
+  File /oname=Misc\2Dlandscape_mfe.gri ../misc/2Dlandscape_mfe.gri
+
+
+  # then all the necessary libraries
+  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgomp-1.dll"
+  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libwinpthread-1.dll"
+  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgcc_s_seh-1.dll"
+  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgsl-0.dll"
+  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgslcblas-0.dll"
+  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libmpfr-4.dll"
+  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgmp-10.dll"
+  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgmpxx-4.dll"
+  
+  File ".local"
+
+  # we also want an uninstall to be installed
+  writeUninstaller "$INSTDIR\Uninstall-${PACKAGE}.exe"
+
+  # Start Menu
+  createDirectory "$SMPROGRAMS\${PACKAGE}"
+  createShortCut "$SMPROGRAMS\${PACKAGE}\Uninstall-${PACKAGE}.lnk" "$INSTDIR\Uninstall-${PACKAGE}.exe"
+
+SectionEnd
+
+Section "Utilities" sec_utils
+  # create the Utils directory and add programs there
+  CreateDirectory "$INSTDIR\Utils"
+  File /oname=Utils\dpzoom.pl ../src/Utils/dpzoom.pl
+  File /oname=Utils\ct2db.exe ../src/Utils/.libs/ct2db.exe
+  File /oname=Utils\b2mt.pl ../src/Utils/b2mt.pl
+  File /oname=Utils\relplot.pl ../src/Utils/relplot.pl
+  File /oname=Utils\mountain.pl ../src/Utils/mountain.pl
+  File /oname=Utils\rotate_ss.pl ../src/Utils/rotate_ss.pl
+  File /oname=Utils\cmount.pl ../src/Utils/cmount.pl
+  File /oname=Utils\coloraln.pl ../src/Utils/coloraln.pl
+  File /oname=Utils\switch.pl ../src/Utils/switch.pl
+  File /oname=Utils\refold.pl ../src/Utils/refold.pl
+  File /oname=Utils\b2ct.exe ../src/Utils/.libs/b2ct.exe
+  File /oname=Utils\popt.exe ../src/Utils/.libs/popt.exe
+
+sectionEnd
+
+Section "Cluster Analysis" sec_cluster
+  File "../src/Cluster/.libs/AnalyseDists.exe"
+  File "../src/Cluster/.libs/AnalyseSeqs.exe"
+SectionEnd
+
+Section "Kinfold" sec_kinfold
+  File "../src/Kinfold/Kinfold.exe"
+SectionEnd
+
+Section "Kinwalker" sec_kinwalker
+  File "../src/Kinwalker/kinwalker.exe"
+SectionEnd
+
+Section "RNAlocmin" sec_rnalocmin
+  File "../src/RNAlocmin/RNAlocmin.exe"
+SectionEnd
+
+# create a section to define what the uninstaller does.
+# the section will always be named "Uninstall"
+section "Uninstall"
+ 
+  # Remove Start Menu launcher
+  delete "$SMPROGRAMS\${PACKAGE}\Uninstall-${PACKAGE}.lnk"
+  # Try to remove the Start Menu folder - this will only happen if it is empty
+  rmDir "$SMPROGRAMS\${PACKAGE}"
+
+  # now delete installed file
+  delete $INSTDIR\RNAeval.exe
+  delete $INSTDIR\RNAfold.exe
+  delete $INSTDIR\RNAheat.exe
+  delete $INSTDIR\RNApdist.exe
+  delete $INSTDIR\RNAdistance.exe
+  delete $INSTDIR\RNAinverse.exe
+  delete $INSTDIR\RNAplot.exe
+  delete $INSTDIR\RNAsubopt.exe
+  delete $INSTDIR\RNALfold.exe
+  delete $INSTDIR\RNAcofold.exe
+  delete $INSTDIR\RNAduplex.exe
+  delete $INSTDIR\RNApaln.exe
+  delete $INSTDIR\RNAalifold.exe
+  delete $INSTDIR\RNAplfold.exe
+  delete $INSTDIR\RNAup.exe
+  delete $INSTDIR\RNAaliduplex.exe
+  delete $INSTDIR\RNAparconv.exe
+  delete $INSTDIR\RNAPKplex.exe
+  delete $INSTDIR\RNApvmin.exe
+  delete $INSTDIR\RNALalifold.exe
+  delete $INSTDIR\RNA2Dfold.exe
+  delete $INSTDIR\RNAplex.exe
+  delete $INSTDIR\RNAsnoop.exe
+  delete $INSTDIR\Kinfold.exe
+  delete $INSTDIR\RNAlocmin.exe
+  delete $INSTDIR\kinwalker.exe
+  delete $INSTDIR\AnalyseDists.exe
+  delete $INSTDIR\AnalyseSeqs.exe
+
+  delete $INSTDIR\Utils\dpzoom.pl
+  delete $INSTDIR\Utils\dpzoom.pl
+  delete $INSTDIR\Utils\ct2db.exe
+  delete $INSTDIR\Utils\b2mt.pl
+  delete $INSTDIR\Utils\relplot.pl
+  delete $INSTDIR\Utils\mountain.pl
+  delete $INSTDIR\Utils\rotate_ss.pl
+  delete $INSTDIR\Utils\cmount.pl
+  delete $INSTDIR\Utils\coloraln.pl
+  delete $INSTDIR\Utils\switch.pl
+  delete $INSTDIR\Utils\refold.pl
+  delete $INSTDIR\Utils\b2ct.exe
+  delete $INSTDIR\Utils\popt.exe
+  rmDir  $INSTDIR\Utils
+
+  delete $INSTDIR\Misc\rna_turner2004.par
+  delete $INSTDIR\Misc\rna_turner1999.par
+  delete $INSTDIR\Misc\rna_andronescu2007.par
+  delete $INSTDIR\Misc\dna_mathews2004.par
+  delete $INSTDIR\Misc\dna_mathews1999.par
+  delete $INSTDIR\Misc\2Dlandscape_pf.gri
+  delete $INSTDIR\Misc\2Dlandscape_mfe.gri
+
+  rmDir  $INSTDIR\Misc
+
+  delete $INSTDIR\libgomp-1.dll
+  delete $INSTDIR\libwinpthread-1.dll
+  delete $INSTDIR\libgcc_s_seh-1.dll
+  delete $INSTDIR\libgsl-0.dll
+  delete $INSTDIR\libgslcblas-0.dll
+  delete $INSTDIR\libmpfr-4.dll
+  delete $INSTDIR\libgmp-10.dll
+  delete $INSTDIR\libgmpxx-4.dll
+  delete $INSTDIR\.local
+
+  delete "$INSTDIR\Uninstall-${PACKAGE}.exe"
+  rmDir  $INSTDIR
+
+sectionEnd
+
+LangString DESC_core ${LANG_ENGLISH} "The exectuable programs, energy parameter files, and the Uninstaller."
+LangString DESC_utils ${LANG_ENGLISH} "Various utility programs and perl scripts"
+LangString DESC_kinfold ${LANG_ENGLISH} "Simulate kinetic folding of RNA secondary structures"
+LangString DESC_cluster ${LANG_ENGLISH} "The Sequence and Distance data cluster analysis tools AnalyseDists and AnalyseSeqs"
+LangString DESC_kinwalker ${LANG_ENGLISH} "Predict (co-transcriptional) RNA folding trajectories"
+LangString DESC_rnalocmin ${LANG_ENGLISH} "Calculate local minima from structures via gradient walks"
+
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+  !insertmacro MUI_DESCRIPTION_TEXT ${sec_core} $(DESC_core)
+  !insertmacro MUI_DESCRIPTION_TEXT ${sec_utils} $(DESC_utils)
+  !insertmacro MUI_DESCRIPTION_TEXT ${sec_cluster} $(DESC_cluster)
+  !insertmacro MUI_DESCRIPTION_TEXT ${sec_kinfold} $(DESC_kinfold)
+  !insertmacro MUI_DESCRIPTION_TEXT ${sec_kinwalker} $(DESC_kinwalker)
+  !insertmacro MUI_DESCRIPTION_TEXT ${sec_rnalocmin} $(DESC_rnalocmin)
+!insertmacro MUI_FUNCTION_DESCRIPTION_END
+
+Function .onInit
+  !insertmacro MULTIUSER_INIT
+
+  Push $0
+
+  StrCpy $1 ${sec_utils}
+  SectionGetFlags ${sec_utils} $0
+  IntOp $0 $0 | ${SECTION_ON}
+  SectionSetFlags ${sec_utils} $0
+
+  SectionGetFlags ${sec_cluster} $0
+  IntOp $0 $0 & ${SECTION_OFF}
+  SectionSetFlags ${sec_cluster} $0
+
+  SectionGetFlags ${sec_kinfold} $0
+  IntOp $0 $0 & ${SECTION_ON}
+  SectionSetFlags ${sec_kinfold} $0
+
+  SectionGetFlags ${sec_kinwalker} $0
+  IntOp $0 $0 & ${SECTION_OFF}
+  SectionSetFlags ${sec_kinwalker} $0
+
+  SectionGetFlags ${sec_rnalocmin} $0
+  IntOp $0 $0 & ${SECTION_ON}
+  SectionSetFlags ${sec_rnalocmin} $0
+
+  Pop $0
+
+FunctionEnd
+
+Function un.onInit
+  !insertmacro MULTIUSER_UNINIT
+FunctionEnd
+

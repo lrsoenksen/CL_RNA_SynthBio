@@ -1,0 +1,45 @@
+# ignore other autotools generated content
+Makefile
+Makefile.in
+configure
+aclocal.m4
+autom4te.cache
+autoscan.log
+depcomp
+missing
+compile
+install-sh
+config
+config.*
+.deps
+stamp-h1
+.dirstamp
+ylwrap
+tests/test-env.sh
+src/ViennaRNA/vrna_config.h
+libtool
+
+# ignore libtoolize generated files
+m4/libtool.m4
+m4/lt*.m4
+
+# ignore all tar.gz archives
+*.tar.gz
+# except the libsvm sources
+!libsvm*.tar.gz
+
+# logfiles of test suites
+*.log
+
+# libtool generated files
+.libs
+*.la
+*.lo
+*.o
+
+# ignore pkg-config file
+RNAlib2.pc
+
+# ignore all postscript files that might be generated
+*.ps
+
