@@ -20,3 +20,6 @@ Code to reproduce Angenent-Mari, N. et al 2019. Deep Learning for RNA Synthetic 
 
 #### PROBLEM DEFINITION
 > To investigate if a deep learning network can be used to predict toehold switch ON/OFF functionality, because in that case it would suggest the network is learning secondary structure prediction that would be transferable to other RNA based problems.
+
+#### DATASET (Direct Download)
+> Due to ocassional high demand in downloads of this GIT, the LFS bandwidth or egress limit of this repo may require you download our data directly from this link: https://www.dropbox.com/s/731h2wudstm3zvh/Toehold_Dataset_Final_2019-10-23.csv?dl=0
